@@ -6,4 +6,30 @@
 
 <h1>Employes</h1>
 
-<h3>@Model.Employee.Count()</h3>
+<div class="row">
+    @foreach (var item in Model.Employee)
+    {
+        var photoParth = $"/images/{item.PhotoPath ?? "noimage.png"}";
+
+        // выствялем для разных дисплеев
+        <div class="col-12 col-sm-6 col-lg-4">
+            <div class="card-deck">
+                <div class="card m-3 cardBoxShadow">
+                    <div class="card-header text-center cardHeaderStyle">
+                        <h3>@item.Name</h3>
+                    </div>
+
+                    <div class="text-center cardBodyStyle">
+                        <img class="card-img-top imageThumbnail" src="@photoParth" asp-append-version="true" />
+                    </div>
+
+                    <divc class="card-footer text-center">
+                        <a hraf="#" class="btn btn-success m-1 buttonShadow">View</a>
+                        <a hraf="#" class="btn btn-primary m-1 buttonShadow">Edit</a>
+                        <a hraf="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                    </divc>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -7,7 +7,7 @@ namespace RazorPages.Services
 {
     public class MockEmployeeRepository : IEmployeeRepository
     {
-        private List<Employee> _employeeList;
+        private readonly List<Employee> _employeeList;
 
         public MockEmployeeRepository()
         {
@@ -15,7 +15,7 @@ namespace RazorPages.Services
             {
                 new Employee()
                 {
-                    Id = 1, Name = "Mary", Email = "mary@index.mail", PhotoPath = "avatar1.png", Departament = Dept.HR
+                    Id = 1, Name = "Mary", Email = "mary@index.mail", PhotoPath = "avatar.png", Departament = Dept.HR
                 },
                 new Employee()
                 {
@@ -23,7 +23,7 @@ namespace RazorPages.Services
                 },
                 new Employee()
                 {
-                    Id = 3, Name = "Sergei", Email = "Sergei@index.mail", PhotoPath = "avatar3.png", Departament = Dept.IT
+                    Id = 3, Name = "Sveta", Email = "Sergei@index.mail", PhotoPath = "avatar3.png", Departament = Dept.IT
                 },
                 new Employee()
                 {
@@ -31,7 +31,7 @@ namespace RazorPages.Services
                 },
                 new Employee()
                 {
-                    Id = 5, Name = "Olya", Email = "Olya@index.mail", PhotoPath = "avatar5.png", Departament = Dept.HR
+                    Id = 5, Name = "Sergei", Email = "Olya@index.mail", PhotoPath = "avatar5.png", Departament = Dept.HR
                 },
                 new Employee()
                 {
