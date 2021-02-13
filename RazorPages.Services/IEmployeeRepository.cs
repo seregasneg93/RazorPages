@@ -9,5 +9,8 @@ namespace RazorPages.Services
     {
         // для пречесления
         IEnumerable<Employee> GetAllEmployees();
+        Employee GetEmployee(int Id);
+        Employee Update(Employee updateEmployee);
+        Employee Add(Employee newEmployee);
     }
 }

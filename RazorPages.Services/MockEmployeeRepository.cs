@@ -1,6 +1,7 @@
 ﻿using RazorPages.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace RazorPages.Services
@@ -40,10 +41,36 @@ namespace RazorPages.Services
             };
         }
 
+        public Employee Add(Employee newEmployee)
+        {
+            newEmployee.Id = _employeeList.Max(x => x.Id) + 1;
+            _employeeList.Add(newEmployee);
+            return newEmployee;
+        }
 
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _employeeList;
+        }
+
+        public Employee GetEmployee(int Id)
+        {
+            return _employeeList.FirstOrDefault(x => x.Id == Id);
+        }
+
+        public Employee Update(Employee updateEmployee)
+        {
+            Employee employee = _employeeList.FirstOrDefault(x => x.Id == updateEmployee.Id);
+
+            if (employee != null)
+            {
+                employee.Name = updateEmployee.Name;
+                employee.Email = updateEmployee.Email;
+                employee.Departament = updateEmployee.Departament;
+                employee.PhotoPath = updateEmployee.PhotoPath;
+            }
+
+            return employee;
         }
     }
 }

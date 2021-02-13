@@ -4,6 +4,13 @@
     ViewData["Title"] = "Employes";
 }
 
+@if (TempData["SeccessMessage"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["SeccessMessage"]
+    </div>
+}
+
 <h1>Employes</h1>
 
 <div class="row">
@@ -24,9 +31,9 @@
                     </div>
 
                     <divc class="card-footer text-center">
-                        <a hraf="#" class="btn btn-success m-1 buttonShadow">View</a>
-                        <a hraf="#" class="btn btn-primary m-1 buttonShadow">Edit</a>
-                        <a hraf="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                        <a asp-page="/Employees/Details" asp-route-Id="@item.Id" class="btn btn-success m-1 buttonShadow">Просмотреть</a>
+                        <a asp-page="/Employees/Edit" asp-route-Id="@item.Id" class="btn btn-primary m-1 buttonShadow">Изменить</a>
+                        <a hraf="#" class="btn btn-danger m-1 buttonShadow">Удалить</a>
                     </divc>
                 </div>
             </div>
