@@ -1,0 +1,36 @@
+﻿@page "{id}"
+@model RazorPages.General.Pages.Employees.DeleteModel
+@{
+    ViewData["Title"] = "Удалить";
+    ViewData["ShowButtons"] = false;
+}
+
+<h1 class="text-center">Подтверждение удаления</h1>
+
+<div class="alert alert-danger">
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 offset-sm-0 offset-md-3 offset-xl-4">
+            <partial name="_DisplayEmployeePartial" model="Model.Employe" view-data="ViewData" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-xl-4 offset-sm-0 offset-md-3 offset-xl-4">
+            <div class="text-center text-secondary">
+                <h4>Id работника: <span class="text-primary">@Model.Employe.Id</span></h4><hr />
+                <h4>Email работника: <span class="text-primary">@Model.Employe.Email</span></h4><hr />
+                <h4>Департамент: <span class="text-primary">@Model.Employe.Departament</span></h4><hr />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <h5>Вы уверены, что хотите удалить данные - @Model.Employe.Name?</h5>
+
+            <form method="post">
+                <button type="submit" class="btn btn-danger">Да</button>
+                <a class="btn btn-success" asp-page="/Employees/Employes">Нет</a>
+            </form>
+        </div>
+    </div>
+</div>

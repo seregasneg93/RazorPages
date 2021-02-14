@@ -48,6 +48,31 @@ namespace RazorPages.Services
             return newEmployee;
         }
 
+        public Employee Delete(int id)
+        {
+            Employee employeeDelete = _employeeList.FirstOrDefault(x => x.Id == id);
+
+            if (employeeDelete != null)
+                _employeeList.Remove(employeeDelete);
+
+            return employeeDelete;
+        }
+
+        public IEnumerable<DeptHeadCount> EmployeCountByDept(Dept? dept)
+        {
+            IEnumerable<Employee> query = _employeeList;
+
+            if (dept.HasValue)
+                query = query.Where(x => x.Departament == dept.Value);
+
+            return query.GroupBy(x => x.Departament)
+                                .Select(x => new DeptHeadCount()
+                                {
+                                    Department = x.Key.Value,
+                                    Count = x.Count()
+                                }).ToList();
+        }
+
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _employeeList;
@@ -56,6 +81,14 @@ namespace RazorPages.Services
         public Employee GetEmployee(int Id)
         {
             return _employeeList.FirstOrDefault(x => x.Id == Id);
+        }
+
+        public IEnumerable<Employee> Search(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return _employeeList;
+
+            return _employeeList.Where(x => x.Name.ToLower().Contains(searchTerm.ToLower()) || x.Email.ToLower().Contains(searchTerm.ToLower()));
         }
 
         public Employee Update(Employee updateEmployee)

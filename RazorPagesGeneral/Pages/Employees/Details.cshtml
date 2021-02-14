@@ -7,6 +7,13 @@
 
 <div class="row justify-content-center m-3">
     <div class="col col-lg-8">
+        @*@await Component.InvokeAsync("HedCount", new { department = Model.Employee.Departament })*@    
+        <vc:hed-count department="@Model.Employee.Departament"></vc:hed-count>
+    </div>
+</div>
+
+<div class="row justify-content-center m-3">
+    <div class="col col-lg-8">
         <div class="card cardBoxShadow">
 
             <div class="card-header cardHeaderStyle text-center">
@@ -40,4 +47,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
